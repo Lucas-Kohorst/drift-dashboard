@@ -1,0 +1,168 @@
+{
+    "annotations": {
+        "list": [{
+            "builtIn": 1,
+            "datasource": "Postgres",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+        }]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 3,
+    "links": [],
+    "panels": [{
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 21,
+                "w": 12,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "showHeader": true
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [{
+                "format": "table",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  public_key as \"User\",\n  CONCAT('$', unrealized_pnl_with_funding) as \"PnL with Funding\"\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time)\nORDER BY unrealized_pnl_with_funding DESC",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Drift  Leaderboard by PNL (with Funding)",
+            "type": "table"
+        },
+        {
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 21,
+                "w": 12,
+                "x": 12,
+                "y": 0
+            },
+            "id": 3,
+            "options": {
+                "showHeader": true
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [{
+                "format": "table",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  public_key,\n  CONCAT('$', unrealized_pnl) as \"PnL without Funding\"\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time)\nORDER BY unrealized_pnl_with_funding DESC",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Drift  Leaderboard by PNL (without Funding)",
+            "type": "table"
+        }
+    ],
+    "schemaVersion": 27,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Leaderboard",
+    "uid": "_5FI0Gtnk",
+    "version": 4
+}

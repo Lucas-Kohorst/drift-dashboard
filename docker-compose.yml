@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+  grafana:
+      container_name: grafana
+      image: grafana/grafana:latest
+      restart: unless-stopped
+      hostname: grafana
+      user: "0"
+      volumes:
+        - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+        - ./grafana/grafanaDatasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+        - ./grafana/grafanaDashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+        - ./grafana/dashboards:/var/lib/grafana/dashboards
+        - ./grafana/grafana-storage:/var/lib/grafana
+      ports: 
+          - 3000:3000
+      networks:
+          - drift-network
+      extra_hosts:
+          - "host.docker.internal:host-gateway"
+  database:
+    image: "postgres:latest"
+    container_name: postgres
+    restart: unless-stopped
+    networks: 
+      - drift-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+      
+  drift-exporter:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: drift_exporter    
+    hostname: drift_exporter
+    restart: always
+    networks: 
+      - drift-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  postgres-volume:
+    external: true
+    name: postgres-volume
+networks:
+  drift-network:
+    driver: bridge
+    name: drift-network

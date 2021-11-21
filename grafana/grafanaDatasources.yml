@@ -1,0 +1,12 @@
+apiVersion: 1
+deleteDatasources: []
+datasources:
+  - name: Postgres
+    type: postgres
+    url: host.docker.internal:5432
+    database: drift
+    user: postgres
+    secureJsonData:
+      password: password
+    jsonData:
+      sslmode: "disable"
