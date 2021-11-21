@@ -1,8 +1,10 @@
+# [Drift](https://drift.trade) Metrics
+
 ```
 drift-sdk > postgres > grafana 
 ```
 
-### Run postgress 
+### Run and Craete an initial Postgres Database 
 ```
 docker pull postgres:latest
 docker volume create postgres-volume
@@ -89,11 +91,10 @@ CREATE ROLE drift  LOGIN SUPERUSER PASSWORD 'password';
 ```
 \c drift
 select * from drift_user join drift_user_position on drift_user.public_key = drift_user_position.public_key;
-
 select * from drift_market join drift_market_data on drift_market.symbol = drift_market_data.symbol;
 ```
 
-## Running 
+## Running the Dashboard
 ```
 docker-compose up -d
 ```
