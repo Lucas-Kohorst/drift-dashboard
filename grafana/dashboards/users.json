@@ -1,0 +1,1129 @@
+{
+    "annotations": {},
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 1,
+    "iteration": 1637509549854,
+    "links": [],
+    "panels": [{
+            "collapsed": false,
+            "datasource": "Postgres",
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 12,
+            "panels": [],
+            "title": "Charts",
+            "type": "row"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 0,
+                "y": 1
+            },
+            "hiddenSeries": false,
+            "id": 14,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "format": "time_series",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  buying_power\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Drift Users Buying Power",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 8,
+                "y": 1
+            },
+            "hiddenSeries": false,
+            "id": 15,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "format": "time_series",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  margin_ratio\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Drift Users Margin Ratio",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "transformations": [],
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 16,
+                "y": 1
+            },
+            "hiddenSeries": false,
+            "id": 16,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "format": "time_series",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  leverage\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Drift Users Leverage",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 0,
+                "y": 6
+            },
+            "hiddenSeries": false,
+            "id": 17,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "format": "time_series",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  total_collateral\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Drift Users Total Collateral",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 8,
+                "y": 6
+            },
+            "hiddenSeries": false,
+            "id": 18,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "format": "time_series",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  total_position_value\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Drift Users Total Position Value",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Postgres",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 16,
+                "y": 6
+            },
+            "hiddenSeries": false,
+            "id": 19,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "format": "time_series",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  free_collateral\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                "refId": "A",
+                "select": [
+                    [{
+                        "params": [
+                            "buying_power"
+                        ],
+                        "type": "column"
+                    }]
+                ],
+                "table": "drift_user_position",
+                "timeColumn": "published_time",
+                "timeColumnType": "timestamptz",
+                "where": [{
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                }]
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Drift Users Free Collateral",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "collapsed": true,
+            "datasource": "Postgres",
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 11
+            },
+            "id": 10,
+            "panels": [{
+                    "datasource": "Postgres",
+                    "fieldConfig": {
+                        "defaults": {
+                            "color": {
+                                "mode": "thresholds"
+                            },
+                            "custom": {
+                                "align": null,
+                                "filterable": false
+                            },
+                            "mappings": [],
+                            "thresholds": {
+                                "mode": "absolute",
+                                "steps": [{
+                                        "color": "green",
+                                        "value": null
+                                    },
+                                    {
+                                        "color": "red",
+                                        "value": 80
+                                    }
+                                ]
+                            }
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 5,
+                        "w": 8,
+                        "x": 0,
+                        "y": 12
+                    },
+                    "id": 2,
+                    "options": {
+                        "frameIndex": 0,
+                        "showHeader": true
+                    },
+                    "pluginVersion": "7.5.4",
+                    "targets": [{
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  buying_power\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                        "refId": "A",
+                        "select": [
+                            [{
+                                "params": [
+                                    "buying_power"
+                                ],
+                                "type": "column"
+                            }]
+                        ],
+                        "table": "drift_user_position",
+                        "timeColumn": "published_time",
+                        "timeColumnType": "timestamptz",
+                        "where": [{
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }]
+                    }],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Drift Users Buying Power",
+                    "type": "table"
+                },
+                {
+                    "datasource": "Postgres",
+                    "fieldConfig": {
+                        "defaults": {
+                            "color": {
+                                "mode": "thresholds"
+                            },
+                            "custom": {
+                                "align": null,
+                                "filterable": false
+                            },
+                            "mappings": [],
+                            "thresholds": {
+                                "mode": "absolute",
+                                "steps": [{
+                                        "color": "green",
+                                        "value": null
+                                    },
+                                    {
+                                        "color": "red",
+                                        "value": 80
+                                    }
+                                ]
+                            }
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 5,
+                        "w": 8,
+                        "x": 8,
+                        "y": 12
+                    },
+                    "id": 8,
+                    "options": {
+                        "frameIndex": 0,
+                        "showHeader": true
+                    },
+                    "pluginVersion": "7.5.4",
+                    "targets": [{
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  buying_power\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                        "refId": "A",
+                        "select": [
+                            [{
+                                "params": [
+                                    "buying_power"
+                                ],
+                                "type": "column"
+                            }]
+                        ],
+                        "table": "drift_user_position",
+                        "timeColumn": "published_time",
+                        "timeColumnType": "timestamptz",
+                        "where": [{
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }]
+                    }],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Drift Users Buying Power",
+                    "type": "table"
+                },
+                {
+                    "datasource": "Postgres",
+                    "fieldConfig": {
+                        "defaults": {
+                            "color": {
+                                "mode": "thresholds"
+                            },
+                            "custom": {
+                                "align": null,
+                                "filterable": false
+                            },
+                            "mappings": [],
+                            "thresholds": {
+                                "mode": "absolute",
+                                "steps": [{
+                                        "color": "green",
+                                        "value": null
+                                    },
+                                    {
+                                        "color": "red",
+                                        "value": 80
+                                    }
+                                ]
+                            }
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 5,
+                        "w": 8,
+                        "x": 16,
+                        "y": 12
+                    },
+                    "id": 4,
+                    "options": {
+                        "frameIndex": 0,
+                        "showHeader": true
+                    },
+                    "pluginVersion": "7.5.4",
+                    "targets": [{
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  leverage\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                        "refId": "A",
+                        "select": [
+                            [{
+                                "params": [
+                                    "buying_power"
+                                ],
+                                "type": "column"
+                            }]
+                        ],
+                        "table": "drift_user_position",
+                        "timeColumn": "published_time",
+                        "timeColumnType": "timestamptz",
+                        "where": [{
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }]
+                    }],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Drift Users Leverage",
+                    "type": "table"
+                },
+                {
+                    "datasource": "Postgres",
+                    "fieldConfig": {
+                        "defaults": {
+                            "color": {
+                                "mode": "thresholds"
+                            },
+                            "custom": {
+                                "align": null,
+                                "filterable": false
+                            },
+                            "mappings": [],
+                            "thresholds": {
+                                "mode": "absolute",
+                                "steps": [{
+                                        "color": "green",
+                                        "value": null
+                                    },
+                                    {
+                                        "color": "red",
+                                        "value": 80
+                                    }
+                                ]
+                            }
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 5,
+                        "w": 8,
+                        "x": 0,
+                        "y": 17
+                    },
+                    "id": 5,
+                    "options": {
+                        "frameIndex": 0,
+                        "showHeader": true
+                    },
+                    "pluginVersion": "7.5.4",
+                    "targets": [{
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  total_collateral\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                        "refId": "A",
+                        "select": [
+                            [{
+                                "params": [
+                                    "buying_power"
+                                ],
+                                "type": "column"
+                            }]
+                        ],
+                        "table": "drift_user_position",
+                        "timeColumn": "published_time",
+                        "timeColumnType": "timestamptz",
+                        "where": [{
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }]
+                    }],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Drift Users Total Collateral",
+                    "type": "table"
+                },
+                {
+                    "datasource": "Postgres",
+                    "fieldConfig": {
+                        "defaults": {
+                            "color": {
+                                "mode": "thresholds"
+                            },
+                            "custom": {
+                                "align": null,
+                                "filterable": false
+                            },
+                            "mappings": [],
+                            "thresholds": {
+                                "mode": "absolute",
+                                "steps": [{
+                                        "color": "green",
+                                        "value": null
+                                    },
+                                    {
+                                        "color": "red",
+                                        "value": 80
+                                    }
+                                ]
+                            }
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 5,
+                        "w": 8,
+                        "x": 8,
+                        "y": 17
+                    },
+                    "id": 3,
+                    "options": {
+                        "frameIndex": 0,
+                        "showHeader": true
+                    },
+                    "pluginVersion": "7.5.4",
+                    "targets": [{
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  margin_ratio\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                        "refId": "A",
+                        "select": [
+                            [{
+                                "params": [
+                                    "buying_power"
+                                ],
+                                "type": "column"
+                            }]
+                        ],
+                        "table": "drift_user_position",
+                        "timeColumn": "published_time",
+                        "timeColumnType": "timestamptz",
+                        "where": [{
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }]
+                    }],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Drift Users Margin Ratio",
+                    "type": "table"
+                },
+                {
+                    "datasource": "Postgres",
+                    "fieldConfig": {
+                        "defaults": {
+                            "color": {
+                                "mode": "thresholds"
+                            },
+                            "custom": {
+                                "align": null,
+                                "filterable": false
+                            },
+                            "mappings": [],
+                            "thresholds": {
+                                "mode": "absolute",
+                                "steps": [{
+                                        "color": "green",
+                                        "value": null
+                                    },
+                                    {
+                                        "color": "red",
+                                        "value": 80
+                                    }
+                                ]
+                            }
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 5,
+                        "w": 8,
+                        "x": 16,
+                        "y": 17
+                    },
+                    "id": 7,
+                    "options": {
+                        "frameIndex": 0,
+                        "showHeader": true
+                    },
+                    "pluginVersion": "7.5.4",
+                    "targets": [{
+                        "format": "time_series",
+                        "group": [],
+                        "metricColumn": "none",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\n  published_time AS \"time\",\n  public_key, \n  free_collateral\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time) AND\n  public_key = ${user:text}",
+                        "refId": "A",
+                        "select": [
+                            [{
+                                "params": [
+                                    "buying_power"
+                                ],
+                                "type": "column"
+                            }]
+                        ],
+                        "table": "drift_user_position",
+                        "timeColumn": "published_time",
+                        "timeColumnType": "timestamptz",
+                        "where": [{
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }]
+                    }],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Drift Users Free Collateral",
+                    "type": "table"
+                }
+            ],
+            "title": "Tables",
+            "type": "row"
+        }
+    ],
+    "schemaVersion": 27,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": [{
+            "current": {
+                "selected": false,
+                "text": "'CUhCSd7jHvycC89L6EqMoDWcWVTXXHhAeXVyB4362qZg'",
+                "value": "'CUhCSd7jHvycC89L6EqMoDWcWVTXXHhAeXVyB4362qZg'"
+            },
+            "description": "User to query",
+            "error": null,
+            "hide": 0,
+            "label": null,
+            "name": "user",
+            "options": [{
+                "selected": false,
+                "text": "'CUhCSd7jHvycC89L6EqMoDWcWVTXXHhAeXVyB4362qZg'",
+                "value": "'CUhCSd7jHvycC89L6EqMoDWcWVTXXHhAeXVyB4362qZg'"
+            }],
+            "query": "'CUhCSd7jHvycC89L6EqMoDWcWVTXXHhAeXVyB4362qZg'",
+            "skipUrlSync": false,
+            "type": "textbox"
+        }]
+    },
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Drift User Data",
+    "uid": "MQlJdGt7z",
+    "version": 7
+}
