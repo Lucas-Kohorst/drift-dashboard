@@ -1,10 +1,8 @@
-# [Drift](https://drift.trade) Metrics
-
 ```
 drift-sdk > postgres > grafana 
 ```
 
-### Run and Craete an initial Postgres Database 
+### Run postgress 
 ```
 docker pull postgres:latest
 docker volume create postgres-volume
@@ -38,6 +36,8 @@ CREATE ROLE drift  LOGIN SUPERUSER PASSWORD 'password';
    MAX_LEVERAGE BIGINT NOT NULL,
    UNREALIZED_PNL_WITH_FUNDING BIGINT NOT NULL,
    UNREALIZED_PNL BIGINT NOT NULL,
+   CUMULATIVE_DEPOSITS BIGINT NOT NULL,
+   TOTAL_FEES BIGINT NOT NULL,
    PRIMARY KEY(PUBLISHED_TIME),
    CONSTRAINT fk_public_key
        FOREIGN KEY(PUBLIC_KEY) 
@@ -91,10 +91,11 @@ CREATE ROLE drift  LOGIN SUPERUSER PASSWORD 'password';
 ```
 \c drift
 select * from drift_user join drift_user_position on drift_user.public_key = drift_user_position.public_key;
+
 select * from drift_market join drift_market_data on drift_market.symbol = drift_market_data.symbol;
 ```
 
-## Running the Dashboard
+## Running 
 ```
 docker-compose up -d
 ```
@@ -103,5 +104,5 @@ docker-compose up -d
 - [x] Trader Leaderboard 
 - [ ] Accounts that Can be Liquidated 
 - [ ] Fix Decimals
-- [ ] All in Docker
-- [ ] Add in Loops
+- [x] All in Docker
+- [x] Add in Loops
