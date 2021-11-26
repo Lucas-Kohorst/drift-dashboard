@@ -1,7 +1,5 @@
 {
-  "annotations": {
-    "list": []
-  },
+  "annotations": {},
   "editable": true,
   "fiscalYearStartMonth": 0,
   "gnetId": null,
@@ -46,7 +44,8 @@
       },
       "id": 2,
       "options": {
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": []
       },
       "pluginVersion": "8.2.5",
       "targets": [
@@ -55,7 +54,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  public_key as \"User\",\n  CONCAT('$', unrealized_pnl_with_funding) as \"PnL with Funding\"\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time)\nORDER BY unrealized_pnl_with_funding DESC",
+          "rawSql": "SELECT \n  public_key as \"User\",\n  CONCAT('$', unrealized_pnl_with_funding) as \"PnL with Funding\"\nFROM  (\n    SELECT DISTINCT ON (public_key) *\n    FROM   drift_user_position\n    ) p\nORDER BY unrealized_pnl_with_funding DESC;",
           "refId": "A",
           "select": [
             [
@@ -130,7 +129,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  public_key,\n  CONCAT('$', unrealized_pnl) as \"PnL without Funding\"\nFROM drift_user_position\nWHERE\n  $__timeFilter(published_time)\nORDER BY unrealized_pnl_with_funding DESC",
+          "rawSql": "SELECT \n  public_key as \"User\",\n  CONCAT('$', unrealized_pnl) as \"PnL without Funding\"\nFROM  (\n    SELECT DISTINCT ON (public_key) *\n    FROM   drift_user_position\n    ) p\nORDER BY unrealized_pnl_with_funding DESC;",
           "refId": "A",
           "select": [
             [
@@ -174,5 +173,6 @@
   "timezone": "",
   "title": "Leaderboard",
   "uid": "_5FI0Gtnk",
-  "version": 1
+  "version": 4
 }
+

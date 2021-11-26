@@ -96,7 +96,7 @@ const main = async () => {
     let sub = await clearingHouse.subscribe();
 
     // Connecting to Postgres DB
-    var connectionString = "postgres://postgres:password@host.docker.internal:5432/drift";
+    var connectionString = "postgres://postgres:password@postgres:5432/drift";
     var pgClient = new pg.Client(connectionString);
     pgClient.connect();
     
